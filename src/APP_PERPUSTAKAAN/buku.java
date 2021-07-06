@@ -6,7 +6,9 @@
 package APP_PERPUSTAKAAN;
 
 import com.mysql.jdbc.Connection;
+import java.awt.HeadlessException;
 import java.sql.SQLException;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -35,6 +37,7 @@ public class buku extends javax.swing.JFrame {
 
     public void tampildata() {
         DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("no");
         model.addColumn("id buku");
         model.addColumn("judul buku");
         model.addColumn("pengrang");
@@ -49,7 +52,7 @@ public class buku extends javax.swing.JFrame {
             java.sql.ResultSet res = stm.executeQuery(sql);
             while (res.next()) {
                 model.addRow(new Object[]{
-                    no++, res.getString(1), res.getString(2), res.getString(3)});
+                    no++, res.getString(1), res.getString(2), res.getString(3), res.getString(4)});
             }
             jTable1.setModel(model);
 
@@ -180,6 +183,11 @@ public class buku extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
@@ -195,14 +203,29 @@ public class buku extends javax.swing.JFrame {
         jButton2.setBounds(680, 660, 100, 50);
 
         jButton4.setText("HAPUS");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton4);
         jButton4.setBounds(950, 660, 90, 50);
 
         jButton5.setText("EDIT");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton5);
         jButton5.setBounds(880, 660, 70, 50);
 
         jButton6.setText("SIMPAN");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton6);
         jButton6.setBounds(780, 660, 100, 50);
 
@@ -324,6 +347,79 @@ public class buku extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         formkosong();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        try{
+          String sql="insert into buku values ('"+id.getText()+"',"                 
+                  
+                  +"'"+judul.getText()+"',"                 
+                  +"'"+pengarang.getText()+"',"
+                  +"'"+jml_halaman.getText()+"')";
+          
+          java.sql.Connection conn=(Connection)konfig.configDB();
+          java.sql.PreparedStatement pstm=conn.prepareStatement(sql);
+          pstm.execute();
+          JOptionPane.showMessageDialog(null, "simpan data berhasil");
+          tampildata();
+          formkosong();
+                  
+      }catch(HeadlessException | SQLException e){
+         JOptionPane.showMessageDialog(this, e.getMessage()); 
+      }
+              
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        id.setEditable(false);
+    
+    int baris =jTable1.rowAtPoint(evt.getPoint());
+    String id_=jTable1.getValueAt(baris,1).toString();
+    id.setText(id_);
+    
+    String judul_=jTable1.getValueAt(baris,2).toString();
+    judul.setText(judul_);
+  
+    String pengarang_=jTable1.getValueAt(baris,3).toString();
+    pengarang.setText(pengarang_);
+    
+    String jml=jTable1.getValueAt(baris,4).toString();
+    jml_halaman.setText(jml);
+    
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+         try{
+          String sql="update  buku set id_buku='"+id.getText()+"',"                                   
+                  +"judul='"+judul.getText()+"',"                
+                  +"pengarang='"+pengarang.getText()+"',"
+                  +"jml_hal='"+jml_halaman.getText()+"'where id_buku='"+id.getText()+"'";
+          
+          java.sql.Connection conn=(Connection)konfig.configDB();
+          java.sql.PreparedStatement pstm=conn.prepareStatement(sql);
+          pstm.execute();
+          JOptionPane.showMessageDialog(null, "data berhasil di edit");
+          tampildata();
+          formkosong();
+                  
+      }catch(HeadlessException | SQLException e){
+         JOptionPane.showMessageDialog(this, e.getMessage()); 
+      }  
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        try{
+          String sql="delete from buku where id_buku='"+id.getText()+"'";
+          java.sql.Connection conn=(Connection)konfig.configDB();
+          java.sql.PreparedStatement pstm=conn.prepareStatement(sql);
+          pstm.execute();
+          JOptionPane.showMessageDialog(null, "data berhasil di hapus");
+          tampildata();
+          formkosong();
+                  
+      }catch(HeadlessException | SQLException e){
+         JOptionPane.showMessageDialog(this, e.getMessage()); 
+      }      
+    }//GEN-LAST:event_jButton4ActionPerformed
 
     /**
      * @param args the command line arguments
