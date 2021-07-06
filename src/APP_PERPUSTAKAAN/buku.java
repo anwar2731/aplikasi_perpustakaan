@@ -5,6 +5,10 @@
  */
 package APP_PERPUSTAKAAN;
 
+import com.mysql.jdbc.Connection;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS TUF GAMING
@@ -16,6 +20,43 @@ public class buku extends javax.swing.JFrame {
      */
     public buku() {
         initComponents();
+        formkosong();
+        tampildata();
+    }
+
+    public void formkosong() {
+        id.setEditable(true);
+        id.setText(null);
+        pengarang.setText(null);
+        judul.setText(null);
+        jml_halaman.setText(null);
+
+    }
+
+    public void tampildata() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("id buku");
+        model.addColumn("judul buku");
+        model.addColumn("pengrang");
+        model.addColumn("jumlah halaman");
+
+        //menampilkan data pada database ke dalam table
+        try {
+            int no = 1;
+            String sql = "select * from buku";
+            java.sql.Connection conn = (Connection) konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                model.addRow(new Object[]{
+                    no++, res.getString(1), res.getString(2), res.getString(3)});
+            }
+            jTable1.setModel(model);
+
+        } catch (SQLException e) {
+            System.out.println("erorr " + e.getMessage());
+
+        }
     }
 
     /**
@@ -35,6 +76,20 @@ public class buku extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton2 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jml_halaman = new javax.swing.JTextField();
+        pengarang = new javax.swing.JTextField();
+        judul = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -114,6 +169,95 @@ public class buku extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(940, 110, 120, 40);
 
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(270, 160, 750, 160);
+
+        jButton2.setText("TAMBAH");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(680, 660, 100, 50);
+
+        jButton4.setText("HAPUS");
+        getContentPane().add(jButton4);
+        jButton4.setBounds(950, 660, 90, 50);
+
+        jButton5.setText("EDIT");
+        getContentPane().add(jButton5);
+        jButton5.setBounds(880, 660, 70, 50);
+
+        jButton6.setText("SIMPAN");
+        getContentPane().add(jButton6);
+        jButton6.setBounds(780, 660, 100, 50);
+
+        jLabel3.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
+        jLabel3.setText("ID_BUKU");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(260, 440, 100, 40);
+
+        jLabel4.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
+        jLabel4.setText("JUMLAH HALAMAN");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(260, 590, 180, 50);
+
+        jLabel5.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
+        jLabel5.setText("PENGARANG");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(260, 540, 120, 50);
+
+        jLabel6.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
+        jLabel6.setText("JUDUL");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(260, 490, 130, 50);
+
+        jml_halaman.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jml_halamanActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jml_halaman);
+        jml_halaman.setBounds(460, 590, 240, 40);
+
+        pengarang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pengarangActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pengarang);
+        pengarang.setBounds(460, 540, 240, 40);
+
+        judul.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                judulActionPerformed(evt);
+            }
+        });
+        getContentPane().add(judul);
+        judul.setBounds(460, 490, 240, 40);
+
+        id.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                idActionPerformed(evt);
+            }
+        });
+        getContentPane().add(id);
+        id.setBounds(460, 440, 240, 40);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/halaman.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1080, 827);
@@ -128,7 +272,7 @@ public class buku extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton13ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-         profil m = new profil();
+        profil m = new profil();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -140,13 +284,13 @@ public class buku extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-         siswa m = new siswa();
+        siswa m = new siswa();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton10ActionPerformed
 
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
-         buku m = new buku();
+        buku m = new buku();
         m.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton11ActionPerformed
@@ -160,6 +304,26 @@ public class buku extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jml_halamanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jml_halamanActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jml_halamanActionPerformed
+
+    private void pengarangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pengarangActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pengarangActionPerformed
+
+    private void judulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_judulActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_judulActionPerformed
+
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_idActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        formkosong();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -197,14 +361,28 @@ public class buku extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTextField jml_halaman;
+    private javax.swing.JTextField judul;
+    private javax.swing.JTextField pengarang;
     // End of variables declaration//GEN-END:variables
 }

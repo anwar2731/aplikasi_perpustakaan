@@ -41,6 +41,10 @@ public class profil extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
+        jButton14 = new javax.swing.JButton();
+        jButton15 = new javax.swing.JButton();
+        jButton16 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jButton4.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
@@ -145,6 +149,22 @@ public class profil extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(230, 20, 710, 120);
 
+        jButton2.setText("TAMBAH");
+        getContentPane().add(jButton2);
+        jButton2.setBounds(680, 660, 100, 50);
+
+        jButton14.setText("SIMPAN");
+        getContentPane().add(jButton14);
+        jButton14.setBounds(780, 660, 100, 50);
+
+        jButton15.setText("EDIT");
+        getContentPane().add(jButton15);
+        jButton15.setBounds(880, 660, 70, 50);
+
+        jButton16.setText("HAPUS");
+        getContentPane().add(jButton16);
+        jButton16.setBounds(950, 660, 90, 50);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/halaman.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 1060, 830);
@@ -237,6 +257,10 @@ public class profil extends javax.swing.JFrame {
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton12;
     private javax.swing.JButton jButton13;
+    private javax.swing.JButton jButton14;
+    private javax.swing.JButton jButton15;
+    private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
