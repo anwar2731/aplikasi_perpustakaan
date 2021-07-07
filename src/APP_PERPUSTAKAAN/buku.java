@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public class buku extends javax.swing.JFrame {
 
     /**
-     * Creates new form buku
+     * Creates new form 
      */
     public buku() {
         initComponents();

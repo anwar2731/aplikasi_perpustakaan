@@ -5,6 +5,12 @@
  */
 package APP_PERPUSTAKAAN;
 
+import com.mysql.jdbc.Connection;
+import java.awt.HeadlessException;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author ASUS TUF GAMING
@@ -16,8 +22,47 @@ public class siswa extends javax.swing.JFrame {
      */
     public siswa() {
         initComponents();
+        formkosong();
+        tampildata();
     }
 
+        public void formkosong() {
+        id.setEditable(true);
+        id.setText(null);
+        nama.setText(null);
+        kelamin.setSelectedItem(this);
+        kelas.setText(null);
+        jurusan.setText(null);
+
+    }
+
+    public void tampildata() {
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("no");
+        model.addColumn("id mahasiswa");
+        model.addColumn("nama mahasiswa ");
+        model.addColumn("jenis kelamin");
+        model.addColumn("kelas");
+        model.addColumn("jurusan");
+
+        //menampilkan data pada database ke dalam table
+        try {
+            int no = 1;
+            String sql = "select * from siswa";
+            java.sql.Connection conn = (Connection) konfig.configDB();
+            java.sql.Statement stm = conn.createStatement();
+            java.sql.ResultSet res = stm.executeQuery(sql);
+            while (res.next()) {
+                model.addRow(new Object[]{
+                    no++, res.getString(1), res.getString(2), res.getString(3), res.getString(4), res.getString(5)});
+            }
+            jTable1.setModel(model);
+
+        } catch (SQLException e) {
+            System.out.println("erorr " + e.getMessage());
+
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,6 +72,7 @@ public class siswa extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel8 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         dasbord = new javax.swing.JButton();
         data_anggota = new javax.swing.JButton();
@@ -41,15 +87,19 @@ public class siswa extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        id = new javax.swing.JTextField();
+        nama = new javax.swing.JTextField();
+        kelas = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
+        jLabel9 = new javax.swing.JLabel();
+        jurusan = new javax.swing.JTextField();
+        kelamin = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/halaman.jpg"))); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1100, 900));
@@ -139,78 +189,112 @@ public class siswa extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(270, 160, 750, 160);
 
         jLabel3.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel3.setText("ID_BUKU");
+        jLabel3.setText("Id_Mahasiswa");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(260, 440, 100, 40);
+        jLabel3.setBounds(260, 410, 170, 40);
 
         jLabel6.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel6.setText("JUDUL");
+        jLabel6.setText("Nama Mahasiswa");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(260, 490, 130, 50);
+        jLabel6.setBounds(260, 460, 180, 50);
 
         jLabel5.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel5.setText("PENGARANG");
+        jLabel5.setText("Jenis kelamin");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(260, 540, 120, 50);
+        jLabel5.setBounds(260, 510, 120, 50);
 
         jLabel4.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel4.setText("JUMLAH HALAMAN");
+        jLabel4.setText("kelas");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(260, 590, 180, 50);
+        jLabel4.setBounds(260, 560, 180, 50);
 
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        id.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                idActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(460, 440, 240, 40);
+        getContentPane().add(id);
+        id.setBounds(460, 410, 240, 40);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        nama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                namaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(460, 490, 240, 40);
+        getContentPane().add(nama);
+        nama.setBounds(460, 460, 240, 40);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        kelas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                kelasActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(460, 540, 240, 40);
-
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(460, 590, 240, 40);
+        getContentPane().add(kelas);
+        kelas.setBounds(460, 560, 240, 40);
 
         jButton3.setText("TAMBAH");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton3);
         jButton3.setBounds(680, 660, 100, 50);
 
         jButton7.setText("SIMPAN");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton7);
         jButton7.setBounds(780, 660, 100, 50);
 
         jButton8.setText("EDIT");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton8);
         jButton8.setBounds(880, 660, 70, 50);
 
         jButton9.setText("HAPUS");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton9);
         jButton9.setBounds(950, 660, 90, 50);
+
+        jLabel9.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
+        jLabel9.setText("Jurusan");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(260, 610, 180, 50);
+
+        jurusan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jurusanActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jurusan);
+        jurusan.setBounds(460, 610, 240, 40);
+
+        kelamin.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "laki laki", "perempuan" }));
+        getContentPane().add(kelamin);
+        kelamin.setBounds(460, 510, 240, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/halaman.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -259,21 +343,101 @@ public class siswa extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_idActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void namaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_namaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_namaActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void kelasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kelasActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_kelasActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+       formkosong();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jurusanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jurusanActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jurusanActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        try{
+          String sql="insert into siswa values ('"+id.getText()+"',"                                 
+                  +"'"+nama.getText()+"',"                 
+                  +"'"+kelamin.getSelectedItem()+"',"
+                  +"'"+kelas.getText()+"',"
+                  +"'"+jurusan.getText()+"')";
+          
+          java.sql.Connection conn=(Connection)konfig.configDB();
+          java.sql.PreparedStatement pstm=conn.prepareStatement(sql);
+          pstm.execute();
+          JOptionPane.showMessageDialog(null, "simpan data berhasil");
+          tampildata();
+          formkosong();
+                  
+      }catch(HeadlessException | SQLException e){
+         JOptionPane.showMessageDialog(this, e.getMessage()); 
+      }
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+            try{
+          String sql="update  siswa set id_siswa='"+id.getText()+"',"                                   
+                  +"nama_s='"+nama.getText()+"',"                
+                  +"jenis_kelamin='"+kelamin.getSelectedItem()+"',"
+                  +"kelas='"+kelas.getText()+"',jurusan='"+jurusan.getText()+
+                  " 'where id_siswa='"+id.getText()+"'";
+          
+          java.sql.Connection conn=(Connection)konfig.configDB();
+          java.sql.PreparedStatement pstm=conn.prepareStatement(sql);
+          pstm.execute();
+          JOptionPane.showMessageDialog(null, "data berhasil di edit");
+          tampildata();
+          formkosong();
+                  
+      }catch(HeadlessException | SQLException e){
+         JOptionPane.showMessageDialog(this, e.getMessage()); 
+      }  
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+              id.setEditable(false);
+    
+    int baris =jTable1.rowAtPoint(evt.getPoint());
+    String id_=jTable1.getValueAt(baris,1).toString();
+    id.setText(id_);
+    
+    String nama_=jTable1.getValueAt(baris,2).toString();
+    nama.setText(nama_);
+  
+    String pengarang_=jTable1.getValueAt(baris,3).toString();
+    kelamin.setSelectedItem(pengarang_);
+    
+    String kelas_=jTable1.getValueAt(baris,4).toString();
+    kelas.setText(kelas_);
+    
+     String jurusan_=jTable1.getValueAt(baris,5).toString();
+    jurusan.setText(jurusan_);
+    
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+         try{
+          String sql="delete from siswa where id_siswa='"+id.getText()+"'";
+          java.sql.Connection conn=(Connection)konfig.configDB();
+          java.sql.PreparedStatement pstm=conn.prepareStatement(sql);
+          pstm.execute();
+          JOptionPane.showMessageDialog(null, "data berhasil di hapus");
+          tampildata();
+          formkosong();
+                  
+      }catch(HeadlessException | SQLException e){
+         JOptionPane.showMessageDialog(this, e.getMessage()); 
+      }    
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -314,6 +478,7 @@ public class siswa extends javax.swing.JFrame {
     private javax.swing.JButton dasbord;
     private javax.swing.JButton data_anggota;
     private javax.swing.JButton data_buku;
+    private javax.swing.JTextField id;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton7;
@@ -325,13 +490,15 @@ public class siswa extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTextField jurusan;
+    private javax.swing.JComboBox<String> kelamin;
+    private javax.swing.JTextField kelas;
+    private javax.swing.JTextField nama;
     private javax.swing.JButton peminjaman;
     private javax.swing.JButton pengembalian;
     // End of variables declaration//GEN-END:variables
