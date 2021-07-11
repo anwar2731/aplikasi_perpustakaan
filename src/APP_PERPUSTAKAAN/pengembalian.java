@@ -40,11 +40,10 @@ public class pengembalian extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField1 = new javax.swing.JTextField();
+        id_s = new javax.swing.JTextField();
+        id_b = new javax.swing.JTextField();
+        tgl = new javax.swing.JTextField();
+        id_s2 = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -145,56 +144,51 @@ public class pengembalian extends javax.swing.JFrame {
         jScrollPane1.setBounds(270, 160, 750, 160);
 
         jLabel3.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel3.setText("ID_BUKU");
+        jLabel3.setText("ID_Siswa");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(260, 440, 100, 40);
 
         jLabel6.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel6.setText("JUDUL");
+        jLabel6.setText("ID_Buku");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(260, 490, 130, 50);
 
         jLabel5.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel5.setText("PENGARANG");
+        jLabel5.setText("TGL_Pengembalian");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(260, 540, 120, 50);
 
-        jLabel4.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
-        jLabel4.setText("JUMLAH HALAMAN");
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(260, 590, 180, 50);
-
-        jTextField5.addActionListener(new java.awt.event.ActionListener() {
+        id_s.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField5ActionPerformed(evt);
+                id_sActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(460, 440, 240, 40);
+        getContentPane().add(id_s);
+        id_s.setBounds(460, 440, 240, 40);
 
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
+        id_b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
+                id_bActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(460, 490, 240, 40);
+        getContentPane().add(id_b);
+        id_b.setBounds(460, 490, 240, 40);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        tgl.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                tglActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(460, 540, 240, 40);
+        getContentPane().add(tgl);
+        tgl.setBounds(460, 540, 240, 40);
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        id_s2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                id_s2ActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(460, 590, 240, 40);
+        getContentPane().add(id_s2);
+        id_s2.setBounds(760, 290, 240, 40);
 
         jButton2.setText("TAMBAH");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -264,21 +258,21 @@ public class pengembalian extends javax.swing.JFrame {
        this.dispose();
     }//GEN-LAST:event_jToggleButton2ActionPerformed
 
-    private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
+    private void id_sActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_sActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField5ActionPerformed
+    }//GEN-LAST:event_id_sActionPerformed
 
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
+    private void id_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_bActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
+    }//GEN-LAST:event_id_bActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void tglActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tglActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_tglActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void id_s2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_id_s2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_id_s2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -297,6 +291,9 @@ public class pengembalian extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField id_b;
+    private javax.swing.JTextField id_s;
+    private javax.swing.JTextField id_s2;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -310,15 +307,11 @@ public class pengembalian extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField5;
     private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JTextField tgl;
     // End of variables declaration//GEN-END:variables
 }
