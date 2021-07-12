@@ -21,6 +21,7 @@ public class pengembalian extends javax.swing.JFrame {
      * Creates new form pengembalian
      */
     public pengembalian() {
+        this.setTitle("halaman pengembalian buku-------------perpustakaan Digital PCR");
         initComponents();
         tampildata();
         formkosong();
@@ -76,16 +77,14 @@ public class pengembalian extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jButton10 = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         jButton12 = new javax.swing.JButton();
         jButton13 = new javax.swing.JButton();
         jToggleButton2 = new javax.swing.JToggleButton();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -99,15 +98,25 @@ public class pengembalian extends javax.swing.JFrame {
         id_p = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         id_s2 = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel9 = new javax.swing.JLabel();
+        jPanel3 = new javax.swing.JPanel();
+        jPanel4 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jSeparator1 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1100, 900));
         getContentPane().setLayout(null);
-
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGO.jpg"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(230, 20, 710, 120);
 
         jButton3.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jButton3.setText("DASBORD");
@@ -118,6 +127,20 @@ public class pengembalian extends javax.swing.JFrame {
         });
         getContentPane().add(jButton3);
         jButton3.setBounds(20, 190, 170, 60);
+
+        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
+        jButton1.setText("PROFIL");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(930, 110, 120, 40);
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/LOGO.jpg"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(550, 10, 580, 120);
 
         jButton10.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
         jButton10.setText("DATA ANGGOTA");
@@ -167,37 +190,6 @@ public class pengembalian extends javax.swing.JFrame {
         });
         getContentPane().add(jToggleButton2);
         jToggleButton2.setBounds(10, 800, 140, 30);
-
-        jButton1.setFont(new java.awt.Font("Arial Rounded MT Bold", 1, 13)); // NOI18N
-        jButton1.setText("PROFIL");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(940, 110, 120, 40);
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
-        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTable1MouseClicked(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-
-        getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(210, 150, 850, 160);
 
         jLabel3.setFont(new java.awt.Font("Swis721 WGL4 BT", 1, 18)); // NOI18N
         jLabel3.setText("ID_Siswa");
@@ -295,9 +287,85 @@ public class pengembalian extends javax.swing.JFrame {
         getContentPane().add(id_s2);
         id_s2.setBounds(660, 470, 40, 10);
 
+        jPanel2.setBackground(new java.awt.Color(28, 28, 198));
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel2.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(28, 64, -1, -1));
+
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/perpuss ikon.png"))); // NOI18N
+        jPanel2.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 430, -1, -1));
+
+        getContentPane().add(jPanel2);
+        jPanel2.setBounds(0, 180, 200, 700);
+        getContentPane().add(jPanel3);
+        jPanel3.setBounds(0, -20, 10, 10);
+        getContentPane().add(jPanel4);
+        jPanel4.setBounds(10, 10, 10, 10);
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable1.setBackground(new java.awt.Color(51, 185, 222));
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.setCellSelectionEnabled(true);
+        jTable1.setDoubleBuffered(true);
+        jTable1.setDragEnabled(true);
+        jTable1.setFillsViewportHeight(true);
+        jTable1.setFocusCycleRoot(true);
+        jTable1.setGridColor(new java.awt.Color(255, 255, 255));
+        jTable1.setSurrendersFocusOnKeystroke(true);
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel5.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 850, 110));
+
+        getContentPane().add(jPanel5);
+        jPanel5.setBounds(200, 170, 850, 620);
+
+        jLabel4.setFont(new java.awt.Font("Freehand521 BT", 0, 13)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(0, 0, 255));
+        jLabel4.setText("Perpustakaan ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(70, 160, 130, 20);
+
+        jLabel8.setFont(new java.awt.Font("STHupo", 0, 13)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(0, 51, 51));
+        jLabel8.setText("Pintar");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(150, 160, 41, 16);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/8.jpg"))); // NOI18N
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(200, 80, 200, 80);
+
+        jPanel6.setBackground(new java.awt.Color(13, 24, 208));
+        getContentPane().add(jPanel6);
+        jPanel6.setBounds(0, 20, 200, 60);
+
+        jLabel11.setFont(new java.awt.Font("Sylfaen", 3, 13)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(0, 51, 102));
+        jLabel11.setText("Tabel Data  Pengembalian Buku  Diperpustakaan SMART LIB");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(390, 130, 470, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/halaman.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1070, 840);
+        jLabel1.setBounds(-10, 10, 1080, 840);
+        getContentPane().add(jSeparator1);
+        jSeparator1.setBounds(820, 120, 100, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -469,12 +537,24 @@ public class pengembalian extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JToggleButton jToggleButton2;
     private javax.swing.JTextField tgl;
